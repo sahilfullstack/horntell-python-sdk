@@ -2,3 +2,4 @@
 /dist
 /horntell.egg-info
 *.pyc
+test.py
