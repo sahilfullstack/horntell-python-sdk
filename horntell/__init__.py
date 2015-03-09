@@ -2,7 +2,7 @@
 api_key = None
 api_secret = None
 
-base_url = 'http://api.horntell.com'
+base_url = 'https://api.horntell.com'
 verify_ssl_certs = True
 
 #sdk
