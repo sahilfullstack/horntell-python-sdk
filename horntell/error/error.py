@@ -1,18 +1,9 @@
 # Exceptions
 class HorntellError(Exception):
 
-    def __init__(self, message=None, http_body=None, http_status=None,
-                 json_body=None):
+    def __init__(self, message=None, code=None,
+                 type=None):
         super(HorntellError, self).__init__(message)
 
-        if http_body and hasattr(http_body, 'decode'):
-            try:
-                http_body = http_body.decode('utf-8')
-            except:
-                http_body = ('<Could not decode body as utf-8. '
-                             'Please report to hello@horntell.com>')
-
-        self.http_body = http_body
-
-        self.http_status = http_status
-        self.json_body = json_body
+        self.code = code
+        self.type = type

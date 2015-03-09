@@ -43,25 +43,24 @@ class APIRequestor(object):
         except (KeyError, TypeError):
             raise error.HorntellError(
                 "Invalid response object from API: %r (HTTP response code "
-                "was %d)" % (body, code),
-                body, code, resp)
+                "was %d)" % (body, code), code)
         if code == 400:
             raise invalid_request_error.InvalidRequestError(
-                err.get('message'), body, code, resp)
+                err.get('message'), code, err.get('type'))
         elif code == 401:
             raise authentication_error.AuthenticationError(
-                err.get('message'), body, code, resp)
+                err.get('message'), code, err.get('type'))
         elif code == 403:
             raise forbidden_error.ForbiddenError(
-                err.get('message'), body, code, resp)
+                err.get('message'), code, err.get('type'))
         elif code == 404:
             raise notfound_error.NotFoundError(
-                err.get('message'), body, code, resp)
+                err.get('message'), code, err.get('type'))
         elif code == 500:
             raise service_error.ServiceError(
-                err.get('message'), body, code, resp)
+                err.get('message'), code, err.get('type'))
         else:
-            raise error.HorntellError(err.get('message'), body, code, resp)
+            raise error.HorntellError(err.get('message'), code, err.get('type'))
 
     #
     # Handles the requset to be send
@@ -107,8 +106,7 @@ class APIRequestor(object):
         except Exception, e:
             raise error.HorntellError(
                 "Invalid response body from API: %s "
-                "(HTTP response code was %d)" % (body, code),
-                body, code)
+                "(HTTP response code was %d)" % (body, code), code)
 
         #
         # Handles the exception thrown from api

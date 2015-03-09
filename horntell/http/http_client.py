@@ -35,26 +35,7 @@ class RequestsClient:
             content = result.content
             status_code = result.status_code
         except Exception, e:
-            # Would catch just requests.exceptions.RequestException, but can
-            # also raise ValueError, RuntimeError, etc.
-            self._handle_request_error(e)
+            raise network_error.NetworkError()
+
         return content, status_code
 
-    def _handle_request_error(self, e):
-        if isinstance(e, requests.exceptions.RequestException):
-            msg = ("Unexpected error communicating with horntell.  "
-                   "If this problem persists, let us know at "
-                   "hello@horntell.com.")
-            err = "%s: %s" % (type(e).__name__, str(e))
-        else:
-            msg = ("Unexpected error communicating with horntell. "
-                   "It looks like there's probably a configuration "
-                   "issue locally.  If this problem persists, let us "
-                   "know at hello@horntell.com.")
-            err = "A %s was raised" % (type(e).__name__,)
-            if str(e):
-                err += " with error message %s" % (str(e),)
-            else:
-                err += " with no error message"
-        msg = textwrap.fill(msg) + "\n\n(Network error: %s)" % (err,)
-        raise network_error.NetworkError(msg)

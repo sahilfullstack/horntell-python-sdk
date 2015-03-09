@@ -4,7 +4,7 @@ print "Attempting horn..."
 
 horntell.api_key = 'T4BCjNDpWLU2qs1nQO220Chwf8wgbHIEExHoPqVH'
 horntell.api_secret = 'Brx4DLKjEWs9aufHpo2sVVznVd1LNZY6S3KiY8E3'
-horntell.base_url = 'http://horntell-api.dev'
+horntell.base_url = 'https://horntell-api.dev'
 
 try:
 #profile
@@ -51,7 +51,7 @@ try:
 	}
 
 
-	resp = horntell.Horn().toProfiles(['470'], options)
+	resp = horntell.Horn().toProfiles(['4700'], options)
 	# resp = horntell.Horn().toProfile('470', options)
 
 	#campaign
@@ -65,15 +65,15 @@ try:
 	#         })
 	print 'Success: %r' % (resp, )
 except horntell.InvalidRequestError, e:
-	print e.json_body
+	print e.message, e.code, e.type
 except horntell.AuthenticationError, e:
-	print e.json_body
+	print e.message
 except horntell.NotFoundError, e:
-	print e.json_body
+	print e.message
 except horntell.NetworkError, e:
-	print e
+	print e.message, e.type, e.code
 except horntell.HorntellError, e:
-	print e.json_body, e.http_status
+	print e.message, e.code
 
 # resp = horntell.Profile().find('460')
 
