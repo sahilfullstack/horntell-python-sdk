@@ -13,10 +13,10 @@ except ImportError:
     from distutils.command.build_py import build_py
 
 setup(
-    name='horntell',
-    description='horntell python bindings',
+    name = 'horntell',
+    description = 'horntell python bindings',
 
-    author='horntell',
-    author_email='support@horntell.com',
-    packages=['horntell']
-    )
+    author = 'horntell',
+    author_email = 'support@horntell.com',
+    packages = ['horntell']
+)
