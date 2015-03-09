@@ -1,4 +1,4 @@
 from horntell.error.error import HorntellError
 
-class AuthenticationError(HorntellError):
+class ForbiddenError(HorntellError):
     pass

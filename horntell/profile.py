@@ -1,10 +1,10 @@
 import horntell
-from horntell.http import http_client
+from horntell.http import api_requester
 
 class Profile:
 
     def __init__(self):
-        self.client = http_client.RequestsClient()
+        self.requester = api_requester.APIRequestor()
 
     #
     # Returns a profile
@@ -12,20 +12,20 @@ class Profile:
     # accepts uid
     #
     def find(self, uid):
-        return self.client.request(
+        return self.requester.request(
             'get', '/profiles/' + uid)
     #
     # Creates a profile
     #
     def create(self, profile=None):
-        return self.client.request(
+        return self.requester.request(
             'post', '/profiles', profile)
 
     #
     # Updates a profile
     #
     def update(self, uid, profile=None):
-        return self.client.request(
+        return self.requester.request(
             'put', '/profiles/' + uid, profile)
     #
     # Deletes a profile
@@ -33,5 +33,5 @@ class Profile:
     # accepts uid
     #
     def delete(self, uid):
-        return self.client.request(
+        return self.requester.request(
             'delete', '/profiles/' + uid)

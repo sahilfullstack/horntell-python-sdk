@@ -1,10 +1,10 @@
 import horntell
-from horntell.http import http_client
+from horntell.http import api_requester
 
 class Campaign:
 
 	def __init__(self):
-		self.client = http_client.RequestsClient()
+		self.requester = api_requester.APIRequestor()
 
 	#
     # Trigger campaign for a profile
@@ -13,7 +13,7 @@ class Campaign:
     # accepts campaignId
     #
 	def toProfile(self, uid, campaignId):
-		return self.client.request(
+		return self.requester.request(
 			'post', '/profiles/' + uid + '/campaigns/' + campaignId)
 
 	#
@@ -23,7 +23,7 @@ class Campaign:
     # accepts campaignId
     #
 	def toProfiles(self, profiles, campaignId):
-		profiles = {'profile_uids[]' : profiles }
+		profiles = {'profile_uids' : profiles }
 
-		return self.client.request(
+		return self.requester.request(
 			'post', '/profiles/campaigns/' + campaignId, profiles)
