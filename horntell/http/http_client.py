@@ -32,10 +32,7 @@ class RequestsClient:
             # This causes the content to actually be read, which could cause
             # e.g. a socket timeout. TODO: The other fetch methods probably
             # are susceptible to the same and should be updated.
-            content = result.content
-            status_code = result.status_code
         except Exception, e:
             raise network_error.NetworkError()
 
-        return content, status_code
-
+        return result

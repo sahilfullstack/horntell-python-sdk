@@ -2,6 +2,7 @@ import json
 import horntell
 from horntell.http import http_client
 from horntell.error import (error, authentication_error, forbidden_error, invalid_request_error, network_error, notfound_error, service_error)
+from horntell.http.response import Response
 
 class APIRequestor(object):
     def __init__(self):
@@ -22,13 +23,15 @@ class APIRequestor(object):
         #
         # creating an request
         #
-        body, code = self.request_raw(
+        result = self.request_raw(
             method, endpoint, params)
+
         #
         # interpreting response
         #
-        resp = self.interpret_response(body, code)
-        return resp
+        response = self.interpret_response(result)
+
+        return Response(response)
 
     #
     # Handling all the errors from api
@@ -84,10 +87,8 @@ class APIRequestor(object):
         #
         params = json.dumps(params)
 
-        body, code = self.client.request(
+        return self.client.request(
             method, url, headers, auth, params)
-
-        return body, code
 
     #
     # Interprets the response
@@ -95,7 +96,9 @@ class APIRequestor(object):
     # accepts body of the request
     # accepts status code of the request
     #
-    def interpret_response(self, body, code):
+    def interpret_response(self, result):
+        body = result.content
+        code = result.status_code
         #
         # Decodes the response
         #
@@ -114,5 +117,5 @@ class APIRequestor(object):
         if not (200 <= code < 300):
             self.handle_api_error(body, code, resp)
 
-        return resp
+        return result
 
