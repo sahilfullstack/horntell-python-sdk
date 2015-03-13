@@ -99,6 +99,10 @@ class APIRequestor(object):
     def interpret_response(self, result):
         body = result.content
         code = result.status_code
+
+        if (code == 204):
+            return result
+
         #
         # Decodes the response
         #
@@ -107,6 +111,7 @@ class APIRequestor(object):
                 body = body.decode('utf-8')
             resp = json.loads(body)
         except Exception, e:
+            return e
             raise error.HorntellError(
                 "Invalid response body from API: %s "
                 "(HTTP response code was %d)" % (body, code), code)

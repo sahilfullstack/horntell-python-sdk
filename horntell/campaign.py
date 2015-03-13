@@ -12,7 +12,7 @@ class Campaign:
     # accepts uid
     # accepts campaignId
     #
-	def toProfile(self, uid, campaignId):
+	def to_profile(self, uid, campaignId):
 		return self.requester.request(
 			'post', '/profiles/' + uid + '/campaigns/' + campaignId)
 
@@ -22,7 +22,7 @@ class Campaign:
     # accepts array of profiles
     # accepts campaignId
     #
-	def toProfiles(self, profiles, campaignId):
+	def to_profiles(self, profiles, campaignId):
 		profiles = {'profile_uids' : profiles }
 
 		return self.requester.request(

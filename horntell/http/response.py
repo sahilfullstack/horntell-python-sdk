@@ -5,12 +5,12 @@ class Response:
 
     def __init__(self, response):
         self.response = response
-        self.body = json.loads(self.response.content)
+        self.content = self.response.content
 
     #
     #  Returns the orignal response
     #
-    def getOriginal(self):
+    def get_original(self):
         return self.response
 
     #
@@ -18,7 +18,12 @@ class Response:
     #
     #  @return array|null (Null in case of No Content)
     #
-    def getBody(self):
+    def get_body(self):
+        if self.get_status_code() == 204:
+            self.body = None
+        else:
+            self.body = json.loads(self.content)
+
         return self.body
 
     #
@@ -26,5 +31,5 @@ class Response:
     #
     #   @return number
     #
-    def getStatusCode(self):
+    def get_status_code(self):
         return self.response.status_code

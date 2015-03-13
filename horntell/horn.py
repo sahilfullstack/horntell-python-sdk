@@ -12,7 +12,7 @@ class Horn:
     # accepts uid
     # accepts horn
     #
-	def toProfile(self, uid, horn):
+	def to_profile(self, uid, horn):
 		return self.requester.request(
 			'post', '/profiles/' + uid + '/horns', horn)
 	#
@@ -21,7 +21,7 @@ class Horn:
     # accepts array of profiles
     # accepts horn
     #
-	def toProfiles(self, profiles, horn):
+	def to_profiles(self, profiles, horn):
 		horn['profile_uids'] = profiles
 
 		return self.requester.request(
