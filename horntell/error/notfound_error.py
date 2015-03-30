@@ -1,4 +1,4 @@
-from horntell.error.error import HorntellError
+from horntell.error.invalid_request_error import InvalidRequestError
 
-class NotFoundError(HorntellError):
+class NotFoundError(InvalidRequestError):
     pass

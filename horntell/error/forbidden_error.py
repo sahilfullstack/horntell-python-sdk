@@ -1,4 +1,4 @@
-from horntell.error.error import HorntellError
+from horntell.error.invalid_request_error import InvalidRequestError
 
-class ForbiddenError(HorntellError):
+class ForbiddenError(InvalidRequestError):
     pass
