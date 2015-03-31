@@ -1,37 +1,33 @@
 import horntell
-from horntell.http import api_requester
+from horntell.http import request
 
 class Profile:
 
     def __init__(self):
-        self.requester = api_requester.APIRequestor()
+        self.request = request.Request()
 
     #
     # Returns a profile
     #
-    # accepts uid
-    #
     def find(self, uid):
-        return self.requester.request(
+        return self.request.request(
             'get', '/profiles/' + uid)
     #
     # Creates a profile
     #
-    def create(self, profile=None):
-        return self.requester.request(
+    def create(self, profile = None):
+        return self.request.request(
             'post', '/profiles', profile)
 
     #
     # Updates a profile
     #
-    def update(self, uid, profile=None):
-        return self.requester.request(
+    def update(self, uid, profile = None):
+        return self.request.request(
             'put', '/profiles/' + uid, profile)
     #
     # Deletes a profile
     #
-    # accepts uid
-    #
     def delete(self, uid):
-        return self.requester.request(
+        return self.request.request(
             'delete', '/profiles/' + uid)
