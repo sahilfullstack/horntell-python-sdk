@@ -34,10 +34,10 @@ if sys.version_info < (3, 0):
 
 setup(
 	name='horntell',
-	version='0.0.1',
+	version='0.1.0',
 	description='Horntell SDK for Python',
 	cmdclass={'build_py': build_py},
-	author='horntell',
+	author='Mohit Mamoria',
 	author_email='mohit@horntell.com',
 	packages=['horntell', 'horntell.http'],
 	url='https://github.com/horntell/python-sdk',
