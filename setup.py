@@ -34,7 +34,7 @@ if sys.version_info < (3, 0):
 
 setup(
 	name='horntell',
-	version='0.1.0',
+	version='0.1.1',
 	description='Horntell SDK for Python',
 	cmdclass={'build_py': build_py},
 	author='Mohit Mamoria',
