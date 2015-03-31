@@ -14,7 +14,6 @@ from horntell.activity import Activity
 from horntell.error.invalid_request_error import InvalidRequestError
 from horntell.error.authentication_error import AuthenticationError
 from horntell.error.forbidden_error import ForbiddenError
-from horntell.error.invalid_request_error import InvalidRequestError
 from horntell.error.network_error import NetworkError
 from horntell.error.notfound_error import NotFoundError
 from horntell.error.service_error import ServiceError

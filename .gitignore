@@ -3,3 +3,4 @@
 /horntell.egg-info
 *.pyc
 /.sketches
+test.py
