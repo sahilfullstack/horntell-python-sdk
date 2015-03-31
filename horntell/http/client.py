@@ -5,7 +5,7 @@ import requests
 import horntell
 import json
 
-from horntell.errors import network_error
+from horntell.errors import NetworkError
 
 class Client:
     name = 'requests'
@@ -33,6 +33,6 @@ class Client:
             # e.g. a socket timeout. TODO: The other fetch methods probably
             # are susceptible to the same and should be updated.
         except Exception, e:
-            raise network_error.NetworkError()
+            raise NetworkError()
 
         return result

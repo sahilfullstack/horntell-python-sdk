@@ -9,8 +9,6 @@ class Profile:
     #
     # Returns a profile
     #
-    # accepts uid
-    #
     def find(self, uid):
         return self.request.request(
             'get', '/profiles/' + uid)
@@ -29,8 +27,6 @@ class Profile:
             'put', '/profiles/' + uid, profile)
     #
     # Deletes a profile
-    #
-    # accepts uid
     #
     def delete(self, uid):
         return self.request.request(

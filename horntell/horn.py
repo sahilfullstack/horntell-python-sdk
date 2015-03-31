@@ -9,17 +9,11 @@ class Horn:
 	#
     # Sends horn to a profile
     #
-    # accepts uid
-    # accepts horn
-    #
 	def to_profile(self, uid, horn):
 		return self.request.request(
 			'post', '/profiles/' + uid + '/horns', horn)
 	#
     # Sends horn to multiple profiles
-    #
-    # accepts array of profiles
-    # accepts horn
     #
 	def to_profiles(self, profiles, horn):
 		horn['profile_uids'] = profiles

@@ -1,7 +1,7 @@
 import json
 import horntell
 from horntell.http import client
-from horntell.errors import (error, authentication_error, forbidden_error, invalid_request_error, network_error, notfound_error, service_error)
+from horntell.errors import (Error, InvalidRequestError, AuthenticationError, ForbiddenError, NotFoundError, NetworkError, ServiceError)
 from horntell.http.response import Response
 
 class Request(object):
@@ -15,62 +15,49 @@ class Request(object):
     #
     # Manages all the processing of the request
     #
-    # accepts method of the request
-    # accepts endpoint to be request
-    # accepts parameters to be send with request
-    #
     def request(self, method, endpoint, params=None):
-        #
+
         # creating an request
-        #
         result = self.request_raw(
             method, endpoint, params)
 
-        #
         # interpreting response
-        #
         response = self.interpret_response(result)
 
         return Response(response)
 
+
     #
     # Handling all the errors from api
-    #
-    # accepts body of the error
-    # accepts status code of the error
-    # accepts response
     #
     def handle_api_error(self, body, code, resp):
         try:
             err = resp['error']
         except (KeyError, TypeError):
-            raise error.HorntellError(
+            raise Error(
                 "Invalid response object from API: %r (HTTP response code "
                 "was %d)" % (body, code), code)
         if code == 400:
-            raise invalid_request_error.InvalidRequestError(
+            raise InvalidRequestError(
                 err.get('message'), code, err.get('type'))
         elif code == 401:
-            raise authentication_error.AuthenticationError(
+            raise AuthenticationError(
                 err.get('message'), code, err.get('type'))
         elif code == 403:
-            raise forbidden_error.ForbiddenError(
+            raise ForbiddenError(
                 err.get('message'), code, err.get('type'))
         elif code == 404:
-            raise notfound_error.NotFoundError(
+            raise NotFoundError(
                 err.get('message'), code, err.get('type'))
         elif code == 500:
-            raise service_error.ServiceError(
+            raise ServiceError(
                 err.get('message'), code, err.get('type'))
         else:
-            raise error.HorntellError(err.get('message'), code, err.get('type'))
+            raise Error(err.get('message'), code, err.get('type'))
+
 
     #
     # Handles the requset to be send
-    #
-    # accepts method of the request
-    # accepts url to be request
-    # accepts parameters to be send with request
     #
     def request_raw(self, method, endpoint, params=None):
 
@@ -82,9 +69,8 @@ class Request(object):
             'Content-Type' : 'application/json'
         }
 
-        #
+
         # encoding the parameters
-        #
         params = json.dumps(params)
 
         return self.client.request(
@@ -93,9 +79,6 @@ class Request(object):
     #
     # Interprets the response
     #
-    # accepts body of the request
-    # accepts status code of the request
-    #
     def interpret_response(self, result):
         body = result.content
         code = result.status_code
@@ -103,22 +86,20 @@ class Request(object):
         if (code == 204):
             return result
 
-        #
+
         # Decodes the response
-        #
         try:
             if hasattr(body, 'decode'):
                 body = body.decode('utf-8')
             resp = json.loads(body)
         except Exception, e:
             return e
-            raise error.HorntellError(
+            raise Error(
                 "Invalid response body from API: %s "
                 "(HTTP response code was %d)" % (body, code), code)
 
-        #
+
         # Handles the exception thrown from api
-        #
         if not (200 <= code < 300):
             self.handle_api_error(body, code, resp)
 

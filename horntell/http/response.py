@@ -2,7 +2,6 @@ import json
 
 class Response:
 
-
     def __init__(self, response):
         self.response = response
         self.content = self.response.content
@@ -16,8 +15,6 @@ class Response:
     #
     #  Gets the parsed JSON body
     #
-    #  @return array|null (Null in case of No Content)
-    #
     def get_body(self):
         if self.get_status_code() == 204:
             self.body = None
@@ -28,8 +25,6 @@ class Response:
 
     #
     #   Gets the HTTP Status Code
-    #
-    #   @return number
     #
     def get_status_code(self):
         return self.response.status_code

@@ -9,21 +9,15 @@ class Campaign:
 	#
     # Trigger campaign for a profile
     #
-    # accepts uid
-    # accepts campaignId
-    #
-	def to_profile(self, uid, campaignId):
+	def to_profile(self, uid, campaign_id):
 		return self.request.request(
-			'post', '/profiles/' + uid + '/campaigns/' + campaignId)
+			'post', '/profiles/' + uid + '/campaigns/' + campaign_id)
 
 	#
     # Trigger campaign to multiple profiles
     #
-    # accepts array of profiles
-    # accepts campaignId
-    #
-	def to_profiles(self, profiles, campaignId):
+	def to_profiles(self, profiles, campaign_id):
 		profiles = {'profile_uids' : profiles }
 
 		return self.request.request(
-			'post', '/profiles/campaigns/' + campaignId, profiles)
+			'post', '/profiles/campaigns/' + campaign_id, profiles)
