@@ -39,7 +39,7 @@ setup(
 	cmdclass={'build_py': build_py},
 	author='horntell',
 	author_email='mohit@horntell.com',
-	packages=['horntell'],
+	packages=['horntell', 'horntell.http'],
 	url='https://github.com/horntell/python-sdk',
 	install_requires=install_requires,
 	use_2to3=True
