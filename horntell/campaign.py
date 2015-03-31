@@ -7,15 +7,15 @@ class Campaign:
 		self.request = request.Request()
 
 	#
-    # Trigger campaign for a profile
-    #
+	# Trigger campaign for a profile
+	#
 	def to_profile(self, uid, campaign_id):
 		return self.request.request(
 			'post', '/profiles/' + uid + '/campaigns/' + campaign_id)
 
 	#
-    # Trigger campaign to multiple profiles
-    #
+	# Trigger campaign to multiple profiles
+	#
 	def to_profiles(self, profiles, campaign_id):
 		profiles = {'profile_uids' : profiles }
 

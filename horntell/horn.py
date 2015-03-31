@@ -7,14 +7,14 @@ class Horn:
 		self.request = request.Request()
 
 	#
-    # Sends horn to a profile
-    #
+	# Sends horn to a profile
+	#
 	def to_profile(self, uid, horn):
 		return self.request.request(
 			'post', '/profiles/' + uid + '/horns', horn)
 	#
-    # Sends horn to multiple profiles
-    #
+	# Sends horn to multiple profiles
+	#
 	def to_profiles(self, profiles, horn):
 		horn['profile_uids'] = profiles
 
