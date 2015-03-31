@@ -5,7 +5,7 @@ import requests
 import horntell
 import json
 
-from horntell.error import network_error
+from horntell.errors import network_error
 
 class Client:
     name = 'requests'

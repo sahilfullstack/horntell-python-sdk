@@ -1,4 +1,4 @@
-from horntell.error.error import HorntellError
+from horntell.errors.error import HorntellError
 
 class NetworkError(HorntellError):
     def __init__(self, message=None, code=None, type=None):

@@ -1,7 +1,7 @@
 import json
 import horntell
 from horntell.http import client
-from horntell.error import (error, authentication_error, forbidden_error, invalid_request_error, network_error, notfound_error, service_error)
+from horntell.errors import (error, authentication_error, forbidden_error, invalid_request_error, network_error, notfound_error, service_error)
 from horntell.http.response import Response
 
 class Request(object):
