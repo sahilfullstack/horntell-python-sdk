@@ -93,7 +93,6 @@ class Request(object):
                 body = body.decode('utf-8')
             resp = json.loads(body)
         except Exception, e:
-            return e
             raise Error(
                 "Invalid response body from API: %s "
                 "(HTTP response code was %d)" % (body, code), code)
