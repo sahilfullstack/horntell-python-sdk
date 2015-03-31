@@ -1,7 +1,7 @@
-key = None
-secret = None
+key     = None
+secret  = None
 
-base = 'http://api.horntell.com'
+base    = 'http://api.horntell.com'
 version = 'v1'
 
 #sdk
