@@ -17,6 +17,6 @@ setup(
     description = 'horntell python bindings',
 
     author = 'horntell',
-    author_email = 'support@horntell.com',
+    author_email = 'mohit@horntell.com',
     packages = ['horntell']
 )
