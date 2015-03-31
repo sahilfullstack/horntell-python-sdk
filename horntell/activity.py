@@ -1,10 +1,10 @@
 import horntell
-from horntell.http import api_requester
+from horntell.http import request
 
 class Activity:
 
     def __init__(self):
-        self.requester = api_requester.APIRequestor()
+        self.request = request.Request()
 
     #
     # Creates a activity
@@ -13,5 +13,5 @@ class Activity:
     # accepts activity
     #
     def create(self, uid, activity):
-        return self.requester.request(
+        return self.request.request(
             'post', '/profiles/' + uid + '/activities', activity)

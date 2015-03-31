@@ -1,15 +1,15 @@
 import json
 import horntell
-from horntell.http import http_client
+from horntell.http import client
 from horntell.error import (error, authentication_error, forbidden_error, invalid_request_error, network_error, notfound_error, service_error)
 from horntell.http.response import Response
 
-class APIRequestor(object):
+class Request(object):
     def __init__(self):
-        self.client = http_client.RequestsClient()
-        self.api_key = horntell.api_key
-        self.api_secret = horntell.api_secret
-        self.base_url = horntell.base_url
+        self.client = client.Client()
+        self.key = horntell.key
+        self.secret = horntell.secret
+        self.base = horntell.base
 
 
     #
@@ -74,11 +74,11 @@ class APIRequestor(object):
     #
     def request_raw(self, method, endpoint, params=None):
 
-        auth = (self.api_key, self.api_secret)
-        url = self.base_url + endpoint
+        auth = (self.key, self.secret)
+        url = self.base + endpoint
 
         headers = {
-            'Accept': 'application/vnd.horntell.v1+json',
+            'Accept': 'application/vnd.horntell.'+ horntell.version +'+json',
             'Content-Type' : 'application/json'
         }
 

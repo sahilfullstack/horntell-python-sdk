@@ -7,7 +7,7 @@ import json
 
 from horntell.error import network_error
 
-class RequestsClient:
+class Client:
     name = 'requests'
 
     def request(self, method, url, headers, auth, post_data=None):

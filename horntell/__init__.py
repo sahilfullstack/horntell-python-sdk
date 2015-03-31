@@ -1,11 +1,11 @@
+key = None
+secret = None
 
-api_key = None
-api_secret = None
-
-base_url = 'http://api.horntell.com'
-verify_ssl_certs = True
+base = 'http://api.horntell.com'
+version = 'v1'
 
 #sdk
+from horntell.app import App
 from horntell.profile import Profile
 from horntell.horn import Horn
 from horntell.campaign import Campaign
