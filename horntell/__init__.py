@@ -1,8 +1,8 @@
-key     = None
-secret  = None
+# key     = None
+# secret  = None
 
-base    = 'http://api.horntell.com'
-version = 'v1'
+# base    = 'http://api.horntell.com'
+# version = 'v1'
 
 #sdk
 from horntell.app import App

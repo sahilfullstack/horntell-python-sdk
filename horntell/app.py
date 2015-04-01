@@ -2,44 +2,57 @@ import horntell
 
 class App:
 
+	key     = None
+	secret  = None
+	base    = 'http://api.horntell.com'
+	version = 'v1'
+
 	#
 	# initiailses the app and secret of the app
 	#
-	def init(self, key = None, secret = None):
-		horntell.key    = key
-		horntell.secret = secret
+	@classmethod
+	def init(cls, key = None, secret = None):
+		cls.key    = key
+		cls.secret = secret
+		# cls(key=key, secret=secret)
 
 	#
 	# sets the base url of the app
 	#
-	def set_base(self, base = None):
-		horntell.base = base
+	@classmethod
+	def set_base(cls, base = None):
+		cls.base = base
 
 	#
 	# returns the base url of the app
 	#
-	def get_base(self):
-		return horntell.base
+	@classmethod
+	def get_base(cls):
+		return cls.base
 
 	#
 	# returns the key of the app
 	#
-	def get_key(self):
-		return horntell.key
+	@classmethod
+	def get_key(cls):
+		return cls.key
 
 	#
 	# returns the secret of the app
 	#
-	def get_secret(self):
-		return horntell.secret
+	@classmethod
+	def get_secret(cls):
+		return cls.secret
 	#
 	# sets the version of the app
 	#
-	def set_version(self, version = None):
-		horntell.version = version
+	@classmethod
+	def set_version(cls, version = None):
+		cls.version = version
 
 	#
 	# returns the version of the app
 	#
-	def get_version(self):
-		return horntell.version
+	@classmethod
+	def get_version(cls):
+		return cls.version

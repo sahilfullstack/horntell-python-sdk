@@ -6,10 +6,11 @@ from horntell.http.response import Response
 
 class Request(object):
 	def __init__(self):
-		self.client = client.Client()
-		self.key    = horntell.key
-		self.secret = horntell.secret
-		self.base   = horntell.base
+		self.client  = client.Client()
+		self.key     = horntell.App().get_key()
+		self.secret  = horntell.App().get_secret()
+		self.base    = horntell.App().get_base()
+		self.version = horntell.App().get_version()
 
 
 	#
@@ -65,7 +66,7 @@ class Request(object):
 		url = self.base + endpoint
 
 		headers = {
-			'Accept': 'application/vnd.horntell.'+ horntell.version +'+json',
+			'Accept': 'application/vnd.horntell.'+ self.version +'+json',
 			'Content-Type' : 'application/json'
 		}
 
