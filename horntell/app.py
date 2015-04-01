@@ -14,7 +14,6 @@ class App:
 	def init(cls, key = None, secret = None):
 		cls.key    = key
 		cls.secret = secret
-		# cls(key=key, secret=secret)
 
 	#
 	# sets the base url of the app
