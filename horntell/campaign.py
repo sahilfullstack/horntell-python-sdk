@@ -10,16 +10,16 @@ class Campaign:
 	# Trigger campaign for a profile
 	#
 	def to_profile(self, uid, campaign_id, meta = None):
-		meta = {'meta' : meta}
+		data = {'meta': meta}
 
 		return self.request.request(
-			'post', '/profiles/' + uid + '/campaigns/' + campaign_id, meta)
+			'post', '/profiles/' + uid + '/campaigns/' + campaign_id, data)
 
 	#
 	# Trigger campaign to multiple profiles
 	#
 	def to_profiles(self, profiles, campaign_id, meta = None):
-		profiles = {'profile_uids' : profiles, 'meta' : meta}
+		data = {'profile_uids': profiles, 'meta': meta}
 
 		return self.request.request(
-			'post', '/profiles/campaigns/' + campaign_id, profiles)
+			'post', '/profiles/campaigns/' + campaign_id, data)
