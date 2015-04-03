@@ -49,6 +49,6 @@ class App:
 	#
 	# returns the hash hmac sha256
 	#
-	def hash_hmac(self, uid):
+	def hash(self, uid):
 		return hmac.new(horntell.secret, uid, hashlib.sha256).hexdigest()
 
