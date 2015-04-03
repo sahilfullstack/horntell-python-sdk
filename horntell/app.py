@@ -1,4 +1,6 @@
 import horntell
+import hmac
+import hashlib
 
 class App:
 
@@ -55,3 +57,9 @@ class App:
 	@classmethod
 	def get_version(cls):
 		return cls.version
+	#
+	# returns the hash hmac sha256
+	#
+	@classmethod
+	def hash(cls, uid):
+		return hmac.new(cls.secret, uid, hashlib.sha256).hexdigest()
