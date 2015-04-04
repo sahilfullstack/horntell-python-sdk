@@ -7,6 +7,8 @@ This SDK allows you to easily integrate Horntell in your Python applications.
 
 **Python 2.6+, Python 3.1+ and PyPy**
 
+**`hmac` and `hashlib` compiled with your Python installation**
+
 **requests(>= 0.8.8), simplejson**
 
 ## Installation
