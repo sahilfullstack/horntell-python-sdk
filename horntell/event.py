@@ -1,5 +1,5 @@
 import horntell
-import sys, urllib2, json
+import sys, urllib2, json, urlparse
 
 class Event:
 
@@ -9,4 +9,4 @@ class Event:
 	def fromWebhook(self):
 		payload = sys.stdin.read()
 		decodedPayload = urllib2.unquote(payload)
-		return json.loads(decodedPayload.split('horntell_event=')[1])
+		return json.loads(urlparse.parse_qs(decodedPayload)['horntell_event'][0]);
