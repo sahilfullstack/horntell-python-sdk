@@ -4,3 +4,7 @@
 *.pyc
 /.sketches
 test.py
+/cgi-bin
+test.py
+webhook.py
+webhook.txt

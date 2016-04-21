@@ -23,3 +23,22 @@ class Campaign:
 
 		return self.request.request(
 			'post', '/profiles/campaigns/' + campaign_id, data)
+
+
+	#
+	# Trigger campaign for a channel
+	#
+	def to_channel(self, uid, campaign_id, meta = None):
+		data = {'meta': meta}
+
+		return self.request.request(
+			'post', '/channels/' + uid + '/campaigns/' + campaign_id, data)
+
+	#
+	# Trigger campaign to multiple channels
+	#
+	def to_channels(self, channels, campaign_id, meta = None):
+		data = {'channel_uids': channels, 'meta': meta}
+
+		return self.request.request(
+			'post', '/channels/campaigns/' + campaign_id, data)
