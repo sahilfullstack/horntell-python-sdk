@@ -10,12 +10,14 @@ class Card:
 	# Sends card to a profile
 	#
 	def to_profile(self, uid, card):
+		card['canvas'] =  (card['canvas'] if ('canvas' in  card) else 'default');
 		return self.request.request(
 			'post', '/profiles/' + uid + '/cards', card)
 	#
 	# Sends card to multiple profiles
 	#
 	def to_profiles(self, profiles, card):
+		card['canvas'] =  (card['canvas'] if ('canvas' in  card) else 'default');
 		card['profile_uids'] = profiles
 
 		return self.request.request(
@@ -24,6 +26,7 @@ class Card:
 	# Sends card to a channel
 	#
 	def to_channel(self, uid, card):
+		card['canvas'] =  (card['canvas'] if ('canvas' in  card) else 'default');
 		return self.request.request(
 			'post', '/channels/' + uid + '/cards', card)
 	#
@@ -31,6 +34,6 @@ class Card:
 	#
 	def to_channels(self, profiles, card):
 		card['channel_uids'] = profiles
-
+		card['canvas'] =  (card['canvas'] if ('canvas' in  card) else 'default');
 		return self.request.request(
 			'post', '/channels/cards', card)
